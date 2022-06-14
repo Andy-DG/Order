@@ -50,4 +50,8 @@ public class CustomerRepository {
             throw new IllegalArgumentException("Member already registered!");
         }
     }
+
+    public Map<String, Customer> getCustomerMap() {
+        return customerMap;
+    }
 }
