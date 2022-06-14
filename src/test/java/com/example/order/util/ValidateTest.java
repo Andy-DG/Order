@@ -19,6 +19,12 @@ class ValidateTest {
     }
 
     @Test
+    @DisplayName("givenANullObjectThrowAnException")
+    void givenANullObjectThrowAnException() {
+        assertThrows(IllegalArgumentException.class, ()-> Validate.objectIsNotNull(null));
+    }
+
+    @Test
     @DisplayName("givenANegativeNumberThrowAnException")
     void givenANegativeNumberThrowAnException() {
         assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(-1));

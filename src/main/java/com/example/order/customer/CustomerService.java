@@ -13,6 +13,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public Customer registerCustomer(CustomerDTO customerDTO) {
         Customer customer = this.customerMapper.toEntity(customerDTO);
         return this.customerRepository.register(customer);
