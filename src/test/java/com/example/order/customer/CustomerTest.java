@@ -1,7 +1,8 @@
 package com.example.order.customer;
 
-import com.example.order.customer.details.Address;
-import com.example.order.customer.details.Name;
+import com.example.order.user.customer.Customer;
+import com.example.order.user.customer.details.Address;
+import com.example.order.user.customer.details.Name;
 import org.junit.jupiter.api.Test;
 
 

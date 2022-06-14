@@ -1,4 +1,4 @@
-package com.example.order.customer;
+package com.example.order.user.customer;
 
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,8 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public Customer registerCustomer(CreateCustomerDTO createCustomerDTO) {
+    public void registerCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = this.customerMapper.toEntity(createCustomerDTO);
-        return this.customerRepository.register(customer);
+        this.customerRepository.register(customer);
     }
 }

@@ -1,12 +1,12 @@
-package com.example.order.customer;
+package com.example.order.user;
 
-import com.example.order.customer.details.Address;
-import com.example.order.customer.details.Name;
+import com.example.order.user.customer.details.Address;
+import com.example.order.user.customer.details.Name;
 import com.example.order.util.Validate;
 
 import java.util.UUID;
 
-public class Customer {
+public abstract class UserDTO {
     private final UUID id;
     private final Name name;
     private final String email;
@@ -14,10 +14,20 @@ public class Customer {
     private final String phoneNumber;
 
 
-    public Customer(Name name, String email, Address address, String phoneNumber) {
+    protected UserDTO(Name name, String email, Address address, String phoneNumber) {
         Validate.validateEmail(email);
         Validate.validatePhoneNumber(phoneNumber);
         this.id = UUID.randomUUID();
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    protected UserDTO(UUID id, Name name, String email, Address address, String phoneNumber) {
+        Validate.validateEmail(email);
+        Validate.validatePhoneNumber(phoneNumber);
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;

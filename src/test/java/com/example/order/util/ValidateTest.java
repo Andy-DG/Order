@@ -15,13 +15,13 @@ class ValidateTest {
     @Test
     @DisplayName("givenANullStringThrowAnException")
     void givenANullStringThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull(null));
+        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull((String) null));
     }
 
     @Test
     @DisplayName("givenANullObjectThrowAnException")
     void givenANullObjectThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.objectIsNotNull(null));
+        assertThrows(IllegalArgumentException.class, ()-> Validate.objectIsNotNull((Object) null));
     }
 
     @Test
@@ -51,7 +51,7 @@ class ValidateTest {
     @Test
     @DisplayName("givenAnNullEmailThrowAnException")
     void givenANullEmailThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail(null));
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail((String) null));
     }
 
     @Test
@@ -69,7 +69,7 @@ class ValidateTest {
     @Test
     @DisplayName("givenANullPhoneNumberThrowAnException")
     void givenANullPhoneNumberThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber(null));
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber((String) null));
     }
 
 }

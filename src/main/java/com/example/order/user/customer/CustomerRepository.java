@@ -1,7 +1,7 @@
-package com.example.order.customer;
+package com.example.order.user.customer;
 
-import com.example.order.customer.details.Address;
-import com.example.order.customer.details.Name;
+import com.example.order.user.customer.details.Address;
+import com.example.order.user.customer.details.Name;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
@@ -31,13 +31,12 @@ public class CustomerRepository {
         return customerMap;
     }
 
-    public Customer register(Customer customer) {
+    public void register(Customer customer) {
         Validate.objectIsNotNull(customer);
         checkIfCustomerWithIdAlreadyExists(customer);
         checkIfCustomerWithEmailAlreadyExists(customer);
         customerMap.put(customer.getId() ,customer);
         logger.info("Registered: " + customer);
-        return customer;
     }
 
     private void checkIfCustomerWithEmailAlreadyExists(Customer customer) {

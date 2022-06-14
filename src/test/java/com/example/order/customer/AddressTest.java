@@ -1,6 +1,6 @@
 package com.example.order.customer;
 
-import com.example.order.customer.details.Address;
+import com.example.order.user.customer.details.Address;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

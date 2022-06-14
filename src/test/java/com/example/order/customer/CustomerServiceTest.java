@@ -1,12 +1,8 @@
 package com.example.order.customer;
 
+import com.example.order.user.customer.CustomerMapper;
+import com.example.order.user.customer.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceTest {
     CustomerMapper customerMapper;
