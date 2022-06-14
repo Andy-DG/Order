@@ -1,11 +1,7 @@
 package com.example.order.util;
 
-import com.example.order.customer.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 

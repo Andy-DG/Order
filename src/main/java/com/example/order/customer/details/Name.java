@@ -1,4 +1,4 @@
-package com.example.order.customer;
+package com.example.order.customer.details;
 
 import com.example.order.util.Validate;
 

@@ -1,5 +1,7 @@
 package com.example.order.util;
 
+import com.example.order.customer.Customer;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +14,12 @@ public class Validate {
             + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$";
 
     private Validate() {}
+
+    public static void objectIsNotNull(Object object) {
+        if (object == null){
+            throw new IllegalArgumentException("Object cannot be empty or null!");
+        }
+    }
 
     public static void stringIsNotEmptyOrNull(String string) throws IllegalArgumentException {
         if (string == null || string.isBlank()){

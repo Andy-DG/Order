@@ -1,5 +1,7 @@
 package com.example.order.customer;
 
+import com.example.order.customer.details.Name;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +12,13 @@ class NameTest {
         String lastName = "Sanchez";
         Name name = new Name("Rick", lastName);
         assertEquals(lastName, name.lastName());
+    }
+
+    @Test
+    void givenAFirstName_whenCreatingName_thenFirstNameIsNotEmpty() {
+        String firstName = "Rick";
+        Name name = new Name(firstName, "Sanchez");
+        assertEquals(firstName, name.firstName());
     }
 
     @Test
