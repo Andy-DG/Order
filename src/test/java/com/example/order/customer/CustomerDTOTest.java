@@ -4,16 +4,15 @@ import com.example.order.customer.details.Address;
 import com.example.order.customer.details.Name;
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerTest {
+class CustomerDTOTest {
     @Test
     void givenAWrongEmailAddress_whenCreatingAMember_thenThrowsIllegalArgumentException() {
         Name name = new Name("Morty", "Smith");
         Address address = new Address("Morty-street", 11, 6910, "Seattle");
         assertThrows(IllegalArgumentException.class, () -> {
-            new Customer(name,
+            new CreateCustomerDTO(name,
                     "mortysmith.com",
                     address,
                     "+111 (202) 555-0125");
@@ -25,7 +24,7 @@ class CustomerTest {
         Name name = new Name("Morty", "Smith");
         Address address = new Address("Morty-street", 11, 6910, "Seattle");
         assertThrows(IllegalArgumentException.class, () -> {
-            new Customer(name,
+            new CreateCustomerDTO(name,
                     "morty@smith.com",
                     address,
                     "+1121 (202) 555-0125");

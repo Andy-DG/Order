@@ -6,7 +6,7 @@ import com.example.order.util.Validate;
 
 import java.util.UUID;
 
-public class Customer {
+public class CreateCustomerDTO {
     private final UUID id;
     private final Name name;
     private final String email;
@@ -14,7 +14,7 @@ public class Customer {
     private final String phoneNumber;
 
 
-    public Customer(Name name, String email, Address address, String phoneNumber) {
+    public CreateCustomerDTO(Name name, String email, Address address, String phoneNumber) {
         Validate.validateEmail(email);
         Validate.validatePhoneNumber(phoneNumber);
         this.id = UUID.randomUUID();

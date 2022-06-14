@@ -4,10 +4,43 @@ import com.example.order.customer.details.Address;
 import com.example.order.customer.details.Name;
 import com.example.order.util.Validate;
 
-public record CustomerDTO(String id, Name name, String email, Address address, String phoneNumber) {
-    public CustomerDTO {
+import java.util.UUID;
+
+public class CustomerDTO {
+    private final UUID id;
+    private final Name name;
+    private final String email;
+    private final Address address;
+    private final String phoneNumber;
+
+
+    public CustomerDTO(Name name, String email, Address address, String phoneNumber) {
         Validate.validateEmail(email);
         Validate.validatePhoneNumber(phoneNumber);
-        Validate.stringIsNotEmptyOrNull(id);
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }

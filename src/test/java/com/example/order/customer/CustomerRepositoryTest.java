@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CustomerRepositoryTest {
-    Customer rick = new Customer("321", new Name("Rick", "Sanchez"),
+    Customer rick = new Customer(new Name("Rick", "Sanchez"),
             "rick@sanchez.com",
             new Address("Morty-street", 11, 6910, "Seattle"),
             "+111 (202) 555-0125");
@@ -21,26 +21,12 @@ class CustomerRepositoryTest {
     }
 
     @Test
-    @DisplayName("Given a map of customers, when we register a customer that has an id that is already used, then an error is thrown")
-    void givenAMapOfCustomers_whenWeRegisterACustomerThatHasAnIdThatIsAlreadyUsed_thenAnErrorIsThrown() {
-        CustomerRepository customerRepository = new CustomerRepository();
-        customerRepository.register(rick);
-
-        Customer ricky = new Customer("321", new Name("Ricky", "Sanchez"),
-                "ricky@sanchez.com",
-                new Address("Morty-street", 11, 6910, "Seattle"),
-                "+111 (202) 555-0125");
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> customerRepository.register(ricky));
-    }
-
-    @Test
     @DisplayName("Given a map of customers, when we register a customer that has an email that is already used, then an error is thrown")
     void givenAMapOfCustomers_whenWeRegisterACustomerThatHasAnEmailThatIsAlreadyUsed_thenAnErrorIsThrown() {
         CustomerRepository customerRepository = new CustomerRepository();
         customerRepository.register(rick);
 
-        Customer ricky = new Customer("3210", new Name("Ricky", "Sanchez"),
+        Customer ricky = new Customer(new Name("Ricky", "Sanchez"),
                 "rick@sanchez.com",
                 new Address("Morty-street", 11, 6910, "Seattle"),
                 "+111 (202) 555-0125");

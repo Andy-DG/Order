@@ -17,9 +17,9 @@ public class CustomerController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public CustomerDTO registerCustomer(@RequestBody CustomerDTO customerDTO){
-        this.customerService.registerCustomer(customerDTO);
-        return customerDTO;
+    public CreateCustomerDTO registerCustomer(@RequestBody CreateCustomerDTO createCustomerDTO){
+        this.customerService.registerCustomer(createCustomerDTO);
+        return createCustomerDTO;
     }
 
 }

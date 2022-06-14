@@ -14,8 +14,8 @@ public class CustomerService {
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Customer registerCustomer(CustomerDTO customerDTO) {
-        Customer customer = this.customerMapper.toEntity(customerDTO);
+    public Customer registerCustomer(CreateCustomerDTO createCustomerDTO) {
+        Customer customer = this.customerMapper.toEntity(createCustomerDTO);
         return this.customerRepository.register(customer);
     }
 }
