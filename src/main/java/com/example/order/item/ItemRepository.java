@@ -15,14 +15,12 @@ public class ItemRepository {
         this.itemMap = new HashMap<>();
     }
 
-
     public void addItem(Item item) throws IllegalArgumentException {
         Validate.objectIsNotNull(item);
         if (itemAlreadyExists(item)) {
             throw new IllegalArgumentException("An item with this name already exists. Use the update item functionality.");
         }
         itemMap.put(item.getId(), item);
-
     }
 
     public boolean itemAlreadyExists(Item itemToAdd) {
