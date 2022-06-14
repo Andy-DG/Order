@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerDTOTest {
+class CreateCustomerDTOTest {
     @Test
     void givenAWrongEmailAddress_whenCreatingAMember_thenThrowsIllegalArgumentException() {
         Name name = new Name("Morty", "Smith");
         Address address = new Address("Morty-street", 11, 6910, "Seattle");
         assertThrows(IllegalArgumentException.class, () -> {
-            new CustomerDTO(name,
+            new CreateCustomerDTO(name,
                     "mortySmith.com",
                     address,
                     "+111 (202) 555-0125");
@@ -24,7 +24,7 @@ class CustomerDTOTest {
         Name name = new Name("Morty", "Smith");
         Address address = new Address("Morty-street", 11, 6910, "Seattle");
         assertThrows(IllegalArgumentException.class, () -> {
-            new CustomerDTO(name,
+            new CreateCustomerDTO(name,
                     "morty@smith.com",
                     address,
                     "+1121 (202) 555-0125");
