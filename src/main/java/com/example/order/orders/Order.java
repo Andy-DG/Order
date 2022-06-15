@@ -11,18 +11,22 @@ public class Order {
     private final UUID id;
     private final List<ItemGroup> itemGroups;
     private final Customer customer;
-    private final double totalPrice;
+    private double totalPrice;
 
-    public Order(UUID id, List<ItemGroup> itemGroups, Customer customer, double totalPrice) {
+    public Order(UUID id, List<ItemGroup> itemGroups, Customer customer) {
         Validate.objectIsNotNull(itemGroups, customer);
         this.id = id;
         this.itemGroups = itemGroups;
         this.customer = customer;
-        this.totalPrice = totalPrice;
+        this.totalPrice = calculateTotalPrice();
     }
 
     public double calculateTotalPrice() {
         return itemGroups.stream().mapToDouble(itemGroup -> itemGroup.getItem().getPrice() * itemGroup.getAmount()).sum();
+    }
+
+    public void updatePrice() {
+        setTotalPrice(calculateTotalPrice());
     }
 
     public UUID getId() {
@@ -39,5 +43,9 @@ public class Order {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

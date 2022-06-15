@@ -24,5 +24,6 @@ public class OrderService {
         Order order = orderMapper.toEntity(addOrderDTO);
         orderRepository.addItem(order);
         customerService.addOrder(order);
+        itemService.updateStock(order);
     }
 }

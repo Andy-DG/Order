@@ -1,5 +1,6 @@
 package com.example.order.item;
 
+import com.example.order.orders.Order;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,9 @@ public class ItemService {
         Validate.objectIsNotNull(addItemDTO);
         Item item = itemMapper.toEntity(addItemDTO);
         itemRepository.addItem(item);
+    }
+
+    public void updateStock(Order order) {
+        order.getItemGroups().forEach(itemGroup -> itemGroup.getItem().setStock(itemGroup.getItem().getStock() - itemGroup.getAmount()));
     }
 }

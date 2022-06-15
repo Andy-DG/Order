@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderMapper {
     public Order toEntity(AddOrderDTO addOrderDTO) {
-        return new Order(addOrderDTO.getId(), addOrderDTO.getItemGroups(), addOrderDTO.getCustomer(), addOrderDTO.getTotalPrice());
+        return new Order(addOrderDTO.getId(), addOrderDTO.getItemGroups(), addOrderDTO.getCustomer());
     }
 
     public OrderDTO toDTO(Order order) {

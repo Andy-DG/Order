@@ -1,6 +1,5 @@
 package com.example.order.orders;
 
-import com.example.order.item.Item;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
