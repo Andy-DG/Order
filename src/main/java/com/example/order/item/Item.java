@@ -1,5 +1,7 @@
 package com.example.order.item;
 
+import com.example.order.util.Validate;
+
 import java.util.UUID;
 
 public class Item {
@@ -10,11 +12,24 @@ public class Item {
     private int amount;
 
     protected Item(UUID id, String name, String description, double price, int amount) {
+        validateAmount(amount);
+        validatePrice(price);
+        Validate.stringIsNotEmptyOrNull(name, description);
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.amount = amount;
+    }
+
+    private void validatePrice(double price) {
+        Validate.numberIsNotNegative(price);
+        Validate.numberIsNotZero(price);
+    }
+
+    private void validateAmount(int amount) {
+        Validate.numberIsNotNegative(amount);
+        Validate.numberIsNotZero(amount);
     }
 
     public UUID getId() {

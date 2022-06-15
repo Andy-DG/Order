@@ -1,5 +1,7 @@
 package com.example.order.item;
 
+import com.example.order.util.Validate;
+
 import java.util.UUID;
 
 public class ItemDTO {

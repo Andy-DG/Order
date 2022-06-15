@@ -25,4 +25,8 @@ public class AdminRepository {
         adminMap.put(admin.getId(), admin);
         return adminMap;
     }
+
+    public Map<UUID, Admin> getAdminMap() {
+        return adminMap;
+    }
 }

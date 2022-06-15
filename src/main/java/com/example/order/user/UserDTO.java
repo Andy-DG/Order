@@ -2,7 +2,6 @@ package com.example.order.user;
 
 import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
-import com.example.order.util.Validate;
 
 import java.util.UUID;
 
@@ -15,8 +14,6 @@ public abstract class UserDTO {
 
 
     protected UserDTO(Name name, String email, Address address, String phoneNumber) {
-        Validate.validateEmail(email);
-        Validate.validatePhoneNumber(phoneNumber);
         this.id = UUID.randomUUID();
         this.name = name;
         this.email = email;
@@ -25,8 +22,6 @@ public abstract class UserDTO {
     }
 
     protected UserDTO(UUID id, Name name, String email, Address address, String phoneNumber) {
-        Validate.validateEmail(email);
-        Validate.validatePhoneNumber(phoneNumber);
         this.id = id;
         this.name = name;
         this.email = email;

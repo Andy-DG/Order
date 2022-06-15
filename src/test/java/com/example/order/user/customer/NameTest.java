@@ -1,4 +1,4 @@
-package com.example.order.customer;
+package com.example.order.user.customer;
 
 import com.example.order.user.customer.details.Name;
 import org.junit.jupiter.api.Test;
