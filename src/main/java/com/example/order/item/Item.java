@@ -11,7 +11,7 @@ public class Item {
     private final double price;
     private int stock;
 
-    protected Item(UUID id, String name, String description, double price, int stock) {
+    public Item(UUID id, String name, String description, double price, int stock) {
         validateAmount(stock);
         validatePrice(price);
         Validate.stringIsNotEmptyOrNull(name, description);

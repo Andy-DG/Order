@@ -22,6 +22,10 @@ public class Customer extends User {
         super(id, name, email, address, phoneNumber);
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
     public void addCustomerOrder(Order order) {
         orderList.add(order);
     }
