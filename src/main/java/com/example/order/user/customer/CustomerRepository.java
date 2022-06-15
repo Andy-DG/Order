@@ -1,5 +1,6 @@
 package com.example.order.user.customer;
 
+import com.example.order.orders.Order;
 import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
 import com.example.order.util.Validate;
@@ -46,7 +47,7 @@ public class CustomerRepository {
     }
 
     private void checkIfCustomerWithIdAlreadyExists(Customer customer) {
-        if (this.customerMap.containsKey(customer.getId())){
+        if (customerMap.containsKey(customer.getId())){
             throw new IllegalArgumentException("Member already registered!");
         }
     }
@@ -54,4 +55,5 @@ public class CustomerRepository {
     public Map<UUID, Customer> getCustomerMap() {
         return customerMap;
     }
+
 }

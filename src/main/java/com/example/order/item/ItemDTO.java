@@ -1,7 +1,5 @@
 package com.example.order.item;
 
-import com.example.order.util.Validate;
-
 import java.util.UUID;
 
 public class ItemDTO {
@@ -9,14 +7,14 @@ public class ItemDTO {
     private final String name;
     private final String description;
     private final double price;
-    private final int amount;
+    private final int stock;
 
-    protected ItemDTO(UUID id, String name, String description, double price, int amount) {
+    protected ItemDTO(UUID id, String name, String description, double price, int stock) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amount = amount;
+        this.stock = stock;
     }
 
     public UUID getId() {
@@ -35,7 +33,7 @@ public class ItemDTO {
         return price;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getStock() {
+        return stock;
     }
 }

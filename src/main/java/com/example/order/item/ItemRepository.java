@@ -24,6 +24,10 @@ public class ItemRepository {
     }
 
     public boolean itemAlreadyExists(Item itemToAdd) {
-        return itemMap.values().stream().anyMatch(item -> item.getName().equals(itemToAdd.getName()));
+        return getItemById(itemToAdd.getId()) != null;
+    }
+
+    public Item getItemById(UUID itemId) {
+        return itemMap.values().stream().filter(item -> item.getId() == itemId).findFirst().orElse(null);
     }
 }

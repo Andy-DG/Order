@@ -1,5 +1,6 @@
 package com.example.order.user.customer;
 
+import com.example.order.orders.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,11 @@ public class CustomerService {
 
     public void registerCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = this.customerMapper.toEntity(createCustomerDTO);
-        this.customerRepository.register(customer);
+        customerRepository.register(customer);
+    }
+
+    public void addOrder(Order order) {
+        Customer customer = order.getCustomer();
+        customer.addCustomerOrder(order);
     }
 }

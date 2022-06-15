@@ -9,17 +9,17 @@ public class Item {
     private final String name;
     private final String description;
     private final double price;
-    private int amount;
+    private int stock;
 
-    protected Item(UUID id, String name, String description, double price, int amount) {
-        validateAmount(amount);
+    protected Item(UUID id, String name, String description, double price, int stock) {
+        validateAmount(stock);
         validatePrice(price);
         Validate.stringIsNotEmptyOrNull(name, description);
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amount = amount;
+        this.stock = stock;
     }
 
     private void validatePrice(double price) {
@@ -48,11 +48,13 @@ public class Item {
         return price;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getStock() {
+        return stock;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
+
+
 }

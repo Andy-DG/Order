@@ -1,4 +1,4 @@
-package com.example.order.user.customer;
+package com.example.order.user.admin.customer;
 
 import com.example.order.user.customer.Customer;
 import com.example.order.user.customer.details.Address;
