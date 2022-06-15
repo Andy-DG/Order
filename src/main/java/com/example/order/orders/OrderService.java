@@ -22,8 +22,12 @@ public class OrderService {
     public void addOrder(AddOrderDTO addOrderDTO) {
         Validate.objectIsNotNull(addOrderDTO);
         Order order = orderMapper.toEntity(addOrderDTO);
-        orderRepository.addItem(order);
+        orderRepository.addOrder(order);
         customerService.addOrder(order);
-        itemService.updateStock(order);
+        updateStock(order);
+    }
+
+    private void updateStock(Order order) {
+        order.getItemGroups().forEach(itemService::updateStock);
     }
 }

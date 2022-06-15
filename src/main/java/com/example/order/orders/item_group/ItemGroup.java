@@ -2,6 +2,7 @@ package com.example.order.orders.item_group;
 
 
 import com.example.order.item.Item;
+import com.example.order.item.SelectedItem;
 import com.example.order.util.Validate;
 
 import java.time.LocalDate;
@@ -12,20 +13,20 @@ public class ItemGroup {
     private static final int DAYS_TO_ADD_NO_STOCK = 7;
 
     private final UUID itemGroupId;
-    private final Item item;
+    private final SelectedItem selectedItem;
     private final int amount;
     private final LocalDate shippingDate;
 
     public ItemGroup(UUID itemGroupId, Item item, int amount) {
         Validate.objectIsNotNull(item);
         this.itemGroupId = itemGroupId;
-        this.item = item;
+        this.selectedItem = new SelectedItem(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getStock());
         this.amount = amount;
         this.shippingDate = calculateShippingDate();
     }
 
     private LocalDate calculateShippingDate() {
-        int stock = item.getStock();
+        int stock = selectedItem.stock();
         if (stock < amount){
             return LocalDate.now().plusWeeks(DAYS_TO_ADD_NO_STOCK);
         }
@@ -36,8 +37,8 @@ public class ItemGroup {
         return itemGroupId;
     }
 
-    public Item getItem() {
-        return item;
+    public SelectedItem getSelectedItem() {
+        return selectedItem;
     }
 
     public int getAmount() {
@@ -47,4 +48,5 @@ public class ItemGroup {
     public LocalDate getShippingDate() {
         return shippingDate;
     }
+
 }

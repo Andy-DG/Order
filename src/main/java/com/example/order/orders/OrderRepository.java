@@ -15,7 +15,7 @@ public class OrderRepository {
         this.orderMap = new HashMap<>();
     }
 
-    public void addItem(Order order) {
+    public void addOrder(Order order) {
         Validate.objectIsNotNull(order);
         if (orderAlreadyExists(order)) {
             throw new IllegalArgumentException("An item with this name already exists. Use the update item functionality.");

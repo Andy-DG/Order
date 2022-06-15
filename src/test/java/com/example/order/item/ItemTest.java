@@ -11,6 +11,41 @@ class ItemTest {
     UUID id = UUID.randomUUID();
 
     @Test
+    @DisplayName("Given an item, when name is blank, throw an error")
+    void givenAnItemWhenNameIsBlankThrowAnError() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Item item = new Item(id, "", "Just a shirt", 5, 3);
+        });
+    }
+
+    @Test
+    @DisplayName("Given an item, when name is null, throw an error")
+    void givenAnItemWhenNameIsNullThrowAnError() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Item item = new Item(id, null, "Just a shirt", 5, 3);
+        });
+    }
+
+    @Test
+    @DisplayName("Given an item, when description is empty, throw an error")
+    void givenAnItemWhenDescriptionIsEmptyThrowAnError() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Item item = new Item(id, "Shirt", "", 5, 3);
+        });
+    }
+
+    @Test
+    @DisplayName("Given an item, when description is null, throw an error")
+    void givenAnItemWhenDescriptionIsNullThrowAnError() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Item item = new Item(id, "Shirt", null, 5, 3);
+        });
+    }
+
+    @Test
     @DisplayName("Given an item with 0 as price, throw an error")
     void givenAnItemWith0AsPriceThrowAnError() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -41,5 +76,4 @@ class ItemTest {
             Item item = new Item(id, "Shirt", "Just a shirt", 5, -5);
         });
     }
-
 }

@@ -1,8 +1,11 @@
 package com.example.order.item;
 
 import com.example.order.orders.Order;
+import com.example.order.orders.item_group.ItemGroup;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ItemService {
@@ -21,7 +24,16 @@ public class ItemService {
         itemRepository.addItem(item);
     }
 
-    public void updateStock(Order order) {
-        order.getItemGroups().forEach(itemGroup -> itemGroup.getItem().setStock(itemGroup.getItem().getStock() - itemGroup.getAmount()));
+    public void updateStock(ItemGroup itemGroup) {
+        Item item = itemRepository.getItemById(itemGroup.getSelectedItem().id());
+        int amount = itemGroup.getAmount();
+        itemRepository.getItemById(item.getId()).setStock(subtractAmountFromStock(item, amount));
+    }
+
+    private int subtractAmountFromStock(Item item, int amount) {
+        if (item.getStock() < amount) {
+            return 0;
+        }
+        return item.getStock() - amount;
     }
 }

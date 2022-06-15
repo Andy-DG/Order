@@ -22,7 +22,7 @@ public class Order {
     }
 
     public double calculateTotalPrice() {
-        return itemGroups.stream().mapToDouble(itemGroup -> itemGroup.getItem().getPrice() * itemGroup.getAmount()).sum();
+        return itemGroups.stream().mapToDouble(itemGroup -> itemGroup.getSelectedItem().price() * itemGroup.getAmount()).sum();
     }
 
     public void updatePrice() {
