@@ -37,6 +37,18 @@ class ValidateTest {
     }
 
     @Test
+    @DisplayName("givenANegativeNumberDoubleThrowAnException")
+    void givenANegativeNumberDoubleThrowAnException() {
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(-1.6));
+    }
+
+    @Test
+    @DisplayName("givenZeroDoubleThrowAnException")
+    void givenZeroDoubleThrowAnException() {
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotZero(0.0));
+    }
+
+    @Test
     @DisplayName("givenABadEmailFormatThrowAnException")
     void givenABadEmailFormatThrowAnException() {
         assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail("this-is-not-a-correct-email-format"));
