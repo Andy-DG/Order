@@ -81,12 +81,12 @@ class CustomerServiceTest {
     @Test
     @DisplayName("When trying to register a customer without an email, then throw exception")
     void givenCustomerWithNoFirstName_thenThrowIllegalArgumentException(){
+        CreateCustomerDTO createCustomerDTO = new CreateCustomerDTO(
+                new Name("Morty", "Smith"),
+                "",
+                new Address("Morty-street", 11, 6910, "Seattle"),
+                "+111 (202) 555-0125");
         assertThrows(IllegalArgumentException.class, ()->{
-            CreateCustomerDTO createCustomerDTO = new CreateCustomerDTO(
-                    new Name("Morty", "Smith"),
-                    "",
-                    new Address("Morty-street", 11, 6910, "Seattle"),
-                    "+111 (202) 555-0125");
             customerService.registerCustomer(createCustomerDTO);
         });
     }

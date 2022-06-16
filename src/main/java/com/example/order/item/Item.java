@@ -8,7 +8,7 @@ public class Item {
     private final UUID id;
     private final String name;
     private final String description;
-    private final double price;
+    private double price;
     private int stock;
 
     public Item(UUID id, String name, String description, double price, int stock) {
@@ -56,5 +56,7 @@ public class Item {
         this.stock = stock;
     }
 
-
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }

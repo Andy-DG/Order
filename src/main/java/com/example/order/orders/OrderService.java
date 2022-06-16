@@ -28,6 +28,6 @@ public class OrderService {
     }
 
     private void updateStock(Order order) {
-        order.getItemGroups().forEach(itemService::updateStock);
+        order.getItemGroups().forEach(itemService::subtractOrderAmountFromStock);
     }
 }

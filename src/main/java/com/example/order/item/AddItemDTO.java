@@ -1,6 +1,7 @@
 package com.example.order.item;
 
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class AddItemDTO {
@@ -36,5 +37,35 @@ public class AddItemDTO {
 
     public int getStock() {
         return stock;
+    }
+
+    @Override
+    public String toString() {
+        return "AddItemDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+
+        AddItemDTO that = (AddItemDTO) o;
+
+        if (Double.compare(that.price, price) != 0) return false;
+        if (stock != that.stock) return false;
+        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        return Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 }
