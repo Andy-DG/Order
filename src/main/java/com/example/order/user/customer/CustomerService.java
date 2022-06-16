@@ -3,6 +3,9 @@ package com.example.order.user.customer;
 import com.example.order.orders.Order;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -24,5 +27,19 @@ public class CustomerService {
     public void addOrder(Order order) {
         Customer customer = order.getCustomer();
         customer.addCustomerOrder(order);
+    }
+
+    private List<Customer> getAllCustomers() {
+        return customerRepository.getAllCustomers();
+    }
+
+    public List<CustomerDTO> viewAllCustomers() {
+        List<Customer> customers = this.getAllCustomers();
+        return customerMapper.toDTO(customers);
+    }
+
+    public CustomerDTO getCustomerById(String id) {
+        Customer customer = this.customerRepository.getCustomerById(id);
+        return customerMapper.toDTO(customer);
     }
 }

@@ -1,9 +1,10 @@
 package com.example.order.user.customer;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("customers/add")
@@ -18,6 +19,18 @@ public class CustomerController {
     public CreateCustomerDTO registerCustomer(@RequestBody CreateCustomerDTO createCustomerDTO){
         this.customerService.registerCustomer(createCustomerDTO);
         return createCustomerDTO;
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public List<CustomerDTO> viewAllCustomers() {
+        return this.customerService.viewAllCustomers();
+    }
+
+    @GetMapping(path = "/{id}", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomerDTO viewCustomer(@PathVariable UUID id){
+        return this.customerService.getCustomerById(id);
     }
 
 }

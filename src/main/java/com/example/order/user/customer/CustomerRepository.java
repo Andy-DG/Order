@@ -6,10 +6,7 @@ import com.example.order.user.customer.details.Name;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Repository
@@ -56,4 +53,9 @@ public class CustomerRepository {
         return customerMap;
     }
 
+    public Customer getCustomerById(String id){return customerMap.get(id);}
+
+    public List<Customer> getAllCustomers() {
+        return customerMap.values().stream().toList();
+    }
 }
