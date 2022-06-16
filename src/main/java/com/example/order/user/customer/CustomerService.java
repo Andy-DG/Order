@@ -14,9 +14,11 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public void registerCustomer(CreateCustomerDTO createCustomerDTO) {
+    public CustomerDTO registerCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = this.customerMapper.toEntity(createCustomerDTO);
+        CustomerDTO customerDTO = this.customerMapper.toDTO(customer);
         customerRepository.register(customer);
+        return customerDTO;
     }
 
     public void addOrder(Order order) {

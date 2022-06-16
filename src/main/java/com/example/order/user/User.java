@@ -4,6 +4,7 @@ import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
 import com.example.order.util.Validate;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class User {
@@ -62,5 +63,17 @@ public abstract class User {
                 ", address=" + address +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(phoneNumber, user.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, address, phoneNumber);
     }
 }

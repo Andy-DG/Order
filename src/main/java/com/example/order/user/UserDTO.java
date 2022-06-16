@@ -3,6 +3,7 @@ package com.example.order.user;
 import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class UserDTO {
@@ -47,5 +48,28 @@ public abstract class UserDTO {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", name=" + name +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserDTO user)) return false;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(phoneNumber, user.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, address, phoneNumber);
     }
 }
