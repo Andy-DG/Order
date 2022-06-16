@@ -34,8 +34,6 @@ class CustomerServiceTest {
 
         CustomerDTO customerAccount = this.customerService.registerCustomer(createCustomerDTO);
 
-        System.out.println(createCustomerDTO.toString());
-        System.out.println(customerAccount.toString());
         assertEquals(customerAccount, createCustomerDTO);
     }
 

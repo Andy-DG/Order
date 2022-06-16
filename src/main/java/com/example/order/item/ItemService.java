@@ -15,10 +15,12 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
-    public void addItem(AddItemDTO addItemDTO) {
+    public ItemDTO addItem(AddItemDTO addItemDTO) {
         Validate.objectIsNotNull(addItemDTO);
         Item item = itemMapper.toEntity(addItemDTO);
+        ItemDTO itemDTO = itemMapper.toDTO(item);
         itemRepository.addItem(item);
+        return itemDTO;
     }
 
     public void subtractOrderAmountFromStock(ItemGroup itemGroup) {
