@@ -36,7 +36,7 @@ public class ItemRepository {
     }
 
     public Item getItemById(UUID itemId) {
-        return itemMap.values().stream().filter(item -> item.getId() == itemId).findFirst().orElse(null);
+        return itemMap.get(itemId);
     }
 
     public Item getItemByName(String name) {

@@ -5,6 +5,7 @@ import com.example.order.user.customer.Customer;
 import com.example.order.util.Validate;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Order {
@@ -47,5 +48,30 @@ public class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (Double.compare(order.totalPrice, totalPrice) != 0) return false;
+        if (!Objects.equals(id, order.id)) return false;
+        if (!Objects.equals(itemGroups, order.itemGroups)) return false;
+        return Objects.equals(customer, order.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (itemGroups != null ? itemGroups.hashCode() : 0);
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        temp = Double.doubleToLongBits(totalPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }

@@ -19,6 +19,13 @@ public class AddOrderDTO {
         this.totalPrice = totalPrice;
     }
 
+    public AddOrderDTO(UUID id, List<ItemGroup> itemGroups, Customer customer, double totalPrice) {
+        this.id = id;
+        this.itemGroups = itemGroups;
+        this.customer = customer;
+        this.totalPrice = totalPrice;
+    }
+
     public UUID getId() {
         return id;
     }

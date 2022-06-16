@@ -20,6 +20,7 @@ public class Customer extends User {
 
     public Customer(UUID id, Name name, String email, Address address, String phoneNumber) {
         super(id, name, email, address, phoneNumber);
+        this.orderList = new ArrayList<>();
     }
 
     public List<Order> getOrderList() {
