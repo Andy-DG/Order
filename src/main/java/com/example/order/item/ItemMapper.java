@@ -11,4 +11,9 @@ public class ItemMapper {
     public ItemDTO toDTO(Item item) {
         return new ItemDTO(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getStock());
     }
+
+    public AddItemDTO toAddItemDTO(Item item) {
+        return new AddItemDTO(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getStock());
+    }
+
 }

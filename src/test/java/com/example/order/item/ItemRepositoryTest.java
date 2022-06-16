@@ -56,15 +56,15 @@ class ItemRepositoryTest {
 
     @Test
     void whenAddingTheSameItem_thenUpdateTheStock(){
-        int item1Stock = 5;
+        int itemStock = 5;
 
-        Item item = new Item(id,"Apple", "An apple", 1.20, item1Stock);
+        Item item = new Item(id,"Shirt", "A Shirt", 1.20, itemStock);
 
         itemRepository.addItem(item);
         itemRepository.addItem(item);
 
         assertTrue(this.itemRepository.getItemMap().containsKey(item.getId()));
-        assertEquals((item1Stock + item1Stock), this.itemRepository.getItemMap().get(item.getId()).getStock());
+        assertEquals((itemStock + itemStock), this.itemRepository.getItemMap().get(item.getId()).getStock());
 
     }
 

@@ -28,7 +28,7 @@ public class ItemGroup {
     private LocalDate calculateShippingDate() {
         int stock = selectedItem.stock();
         if (stock < amount){
-            return LocalDate.now().plusWeeks(DAYS_TO_ADD_NO_STOCK);
+            return LocalDate.now().plusDays(DAYS_TO_ADD_NO_STOCK);
         }
         return LocalDate.now().plusDays(DAYS_TO_ADD_IN_STOCK);
     }
