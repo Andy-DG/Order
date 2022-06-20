@@ -1,6 +1,7 @@
 package com.example.order.item;
 
 import com.example.order.orders.item_group.ItemGroup;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class ItemService {
     }
 
     public ItemDTO addItem(AddItemDTO addItemDTO) {
-        Validate.objectIsNotNull(addItemDTO);
+        Validate.objectIsNotNull(new ErrorSpecification("Item "), addItemDTO);
         Item item = itemMapper.toEntity(addItemDTO);
         ItemDTO itemDTO = itemMapper.toDTO(item);
         itemRepository.addItem(item);

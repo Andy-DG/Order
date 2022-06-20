@@ -3,6 +3,7 @@ package com.example.order.user.customer;
 import com.example.order.orders.Order;
 import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
@@ -30,7 +31,7 @@ public class CustomerRepository {
     }
 
     public void register(Customer customer) {
-        Validate.objectIsNotNull(customer);
+        Validate.objectIsNotNull(new ErrorSpecification("Cutsomer to register "), customer);
         checkIfCustomerWithIdAlreadyExists(customer);
         checkIfCustomerWithEmailAlreadyExists(customer);
         customerMap.put(customer.getId() ,customer);

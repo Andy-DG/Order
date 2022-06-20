@@ -14,51 +14,51 @@ public class Validate {
     private Validate() {
     }
 
-    public static void objectIsNotNull(Object... objects) {
+    public static void objectIsNotNull(ErrorSpecification errorSpecification, Object... objects) {
         for (Object object : objects) {
             if (object == null) {
-                throw new IllegalArgumentException("Object cannot be empty or null!");
+                throw new IllegalArgumentException(errorSpecification + " cannot be null!");
             }
         }
     }
 
-    public static void stringIsNotEmptyOrNull(String... strings) throws IllegalArgumentException {
+    public static void stringIsNotEmptyOrNull(ErrorSpecification errorSpecification, String... strings) throws IllegalArgumentException {
         for (String string : strings) {
             if (string == null || string.isBlank()) {
-                throw new IllegalArgumentException("String cannot be empty or null!");
+                throw new IllegalArgumentException(errorSpecification + " cannot be empty or null!");
             }
         }
     }
 
-    public static void numberIsNotZero(int... numbers) throws IllegalArgumentException {
+    public static void numberIsNotZero(ErrorSpecification errorSpecification, int... numbers) throws IllegalArgumentException {
         for (int number : numbers) {
-            if (number == 0) throw new IllegalArgumentException("Number cannot be zero!");
+            if (number == 0) throw new IllegalArgumentException(errorSpecification + " cannot be zero!");
         }
     }
 
-    public static void numberIsNotNegative(int... numbers) throws IllegalArgumentException {
+    public static void numberIsNotNegative(ErrorSpecification errorSpecification, int... numbers) throws IllegalArgumentException {
         for (int number : numbers) {
-            if (number < 0) throw new IllegalArgumentException("Number cannot be negative!");
+            if (number < 0) throw new IllegalArgumentException(errorSpecification + " cannot be negative!");
         }
     }
 
-    public static void numberIsNotZero(double... numbers) throws IllegalArgumentException {
+    public static void numberIsNotZero(ErrorSpecification errorSpecification, double... numbers) throws IllegalArgumentException {
         for (double number : numbers) {
-            if (number == 0) throw new IllegalArgumentException("Number cannot be zero!");
+            if (number == 0) throw new IllegalArgumentException(errorSpecification + "Number cannot be zero!");
         }
     }
 
-    public static void numberIsNotNegative(double... numbers) throws IllegalArgumentException {
+    public static void numberIsNotNegative(ErrorSpecification errorSpecification, double... numbers) throws IllegalArgumentException {
         for (double number : numbers) {
-            if (number < 0) throw new IllegalArgumentException("Number cannot be negative!");
+            if (number < 0) throw new IllegalArgumentException(errorSpecification + " cannot be negative!");
         }
     }
 
     //  Email has to be of format: rick@sanchez.net
-    public static void validateEmail(String... emails) throws IllegalArgumentException {
+    public static void validateEmail(ErrorSpecification errorSpecification, String... emails) throws IllegalArgumentException {
         for (String email : emails) {
             if (email == null) {
-                throw new IllegalArgumentException("Email cannot be empty");
+                throw new IllegalArgumentException(errorSpecification + " cannot be empty");
             }
             Pattern pattern = Pattern.compile(OWASP_EMAIL_VALIDATION);
             Matcher matcher = pattern.matcher(email);
@@ -70,10 +70,10 @@ public class Validate {
 
     //  Phone-number has to be of one of the following formats: 2055550125, 202 555 0125, (202) 555-0125, +111 (202) 555-0125,
     //      636 856 789, +111 636 856 789, 636 85 67 89, +111 636 85 67 89
-    public static void validatePhoneNumber(String... phoneNumbers) throws IllegalArgumentException {
+    public static void validatePhoneNumber(ErrorSpecification errorSpecification, String... phoneNumbers) throws IllegalArgumentException {
         for (String phoneNumber : phoneNumbers) {
             if (phoneNumber == null) {
-                throw new IllegalArgumentException("Phone-number cannot be empty");
+                throw new IllegalArgumentException(errorSpecification + " cannot be empty");
             }
             Pattern pattern = Pattern.compile(PHONE_VALIDATION);
             Matcher matcher = pattern.matcher(phoneNumber);

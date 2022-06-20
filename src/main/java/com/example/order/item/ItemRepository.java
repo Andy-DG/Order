@@ -1,6 +1,7 @@
 package com.example.order.item;
 
 import com.example.order.orders.item_group.ItemGroup;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ public class ItemRepository {
     }
 
     public void addItem(Item item) throws IllegalArgumentException {
-        Validate.objectIsNotNull(item);
+        Validate.objectIsNotNull(new ErrorSpecification("Item "), item);
         if (itemAlreadyExists(item)) {
             updateCurrentItemInMap(item);
         }

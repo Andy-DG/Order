@@ -1,5 +1,6 @@
 package com.example.order.orders;
 
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,7 @@ public class OrderRepository {
     }
 
     public void addOrder(Order order) {
-        Validate.objectIsNotNull(order);
+        Validate.objectIsNotNull(new ErrorSpecification("Order to add "), order);
         if (orderAlreadyExists(order)) {
             throw new IllegalArgumentException("An item with this name already exists. Use the update item functionality.");
         }

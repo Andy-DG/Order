@@ -30,7 +30,7 @@ public class CustomerController {
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public CustomerDTO viewCustomer(@PathVariable UUID id){
-        return this.customerService.getCustomerById(id);
+        return this.customerService.getCustomerById(String.valueOf(id));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.order.item;
 
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class Item {
     public Item(UUID id, String name, String description, double price, int stock) {
         validateAmount(stock);
         validatePrice(price);
-        Validate.stringIsNotEmptyOrNull(name, description);
+        Validate.stringIsNotEmptyOrNull(new ErrorSpecification("Name and description "), name, description);
         this.id = id;
         this.name = name;
         this.description = description;
@@ -24,13 +25,13 @@ public class Item {
     }
 
     private void validatePrice(double price) {
-        Validate.numberIsNotNegative(price);
-        Validate.numberIsNotZero(price);
+        Validate.numberIsNotNegative(new ErrorSpecification("Price "),price);
+        Validate.numberIsNotZero(new ErrorSpecification("Price "), price);
     }
 
     private void validateAmount(int amount) {
-        Validate.numberIsNotNegative(amount);
-        Validate.numberIsNotZero(amount);
+        Validate.numberIsNotNegative(new ErrorSpecification("Amount "), amount);
+        Validate.numberIsNotZero(new ErrorSpecification("Amount "),amount);
     }
 
     public UUID getId() {

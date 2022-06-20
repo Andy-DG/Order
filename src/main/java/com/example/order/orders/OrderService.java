@@ -2,6 +2,7 @@ package com.example.order.orders;
 
 import com.example.order.item.ItemService;
 import com.example.order.user.customer.CustomerService;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class OrderService {
     }
 
     public void addOrder(AddOrderDTO addOrderDTO) {
-        Validate.objectIsNotNull(addOrderDTO);
+        Validate.objectIsNotNull(new ErrorSpecification("Order to add "), addOrderDTO);
         Order order = orderMapper.toEntity(addOrderDTO);
         orderRepository.addOrder(order);
         customerService.addOrder(order);

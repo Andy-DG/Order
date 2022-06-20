@@ -2,6 +2,7 @@ package com.example.order.orders;
 
 import com.example.order.orders.item_group.ItemGroup;
 import com.example.order.user.customer.Customer;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class Order {
     private double totalPrice;
 
     public Order(UUID id, List<ItemGroup> itemGroups, Customer customer) {
-        Validate.objectIsNotNull(itemGroups, customer);
+        Validate.objectIsNotNull(new ErrorSpecification("item-group: " + itemGroups + " "),itemGroups, customer);
         this.id = id;
         this.itemGroups = itemGroups;
         this.customer = customer;

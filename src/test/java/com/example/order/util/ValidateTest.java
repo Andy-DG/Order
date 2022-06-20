@@ -7,81 +7,94 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ValidateTest {
     @Test
-    @DisplayName("givenAnEmptyStringThrowAnException")
+    @DisplayName("Given An Empty String, Throw An Exception")
     void givenAnEmptyStringThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull(""));
+        ErrorSpecification errorSpecification = new ErrorSpecification("String");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull(errorSpecification, ""));
     }
 
     @Test
-    @DisplayName("givenANullStringThrowAnException")
+    @DisplayName("Given A Null String, Throw An Exception")
     void givenANullStringThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull((String) null));
+        ErrorSpecification errorSpecification = new ErrorSpecification("String");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.stringIsNotEmptyOrNull(errorSpecification, (String) null));
     }
 
     @Test
-    @DisplayName("givenANullObjectThrowAnException")
+    @DisplayName("Given A Null Object, Throw An Exception")
     void givenANullObjectThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.objectIsNotNull((Object) null));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Object");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.objectIsNotNull(errorSpecification, (Object) null));
     }
 
     @Test
-    @DisplayName("givenANegativeNumberThrowAnException")
+    @DisplayName("Given A Negative Number, Throw An Exception")
     void givenANegativeNumberThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(-1));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(errorSpecification, -1));
     }
 
     @Test
-    @DisplayName("givenZeroThrowAnException")
+    @DisplayName("Given Zero, Throw An Exception")
     void givenZeroThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotZero(0));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotZero(errorSpecification, 0));
     }
 
     @Test
-    @DisplayName("givenANegativeNumberDoubleThrowAnException")
+    @DisplayName("Given A Negative Number Double, Throw An Exception")
     void givenANegativeNumberDoubleThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(-1.6));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotNegative(errorSpecification, -1.6));
     }
 
     @Test
-    @DisplayName("givenZeroDoubleThrowAnException")
+    @DisplayName("Given Zero Double, Throw An Exception")
     void givenZeroDoubleThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotZero(0.0));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.numberIsNotZero(errorSpecification, 0.0));
     }
 
     @Test
-    @DisplayName("givenABadEmailFormatThrowAnException")
+    @DisplayName("Given A Bad Email Format, Throw An Exception")
     void givenABadEmailFormatThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail("this-is-not-a-correct-email-format"));
+        ErrorSpecification errorSpecification = new ErrorSpecification("E-mail");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail(errorSpecification, "this-is-not-a-correct-email-format"));
     }
 
     @Test
-    @DisplayName("givenAnEmptyEmailThrowAnException")
+    @DisplayName("Given An Empty Email, Throw An Exception")
     void givenAnEmptyEmailThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail(""));
+        ErrorSpecification errorSpecification = new ErrorSpecification("E-mail");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail(errorSpecification,""));
     }
 
     @Test
-    @DisplayName("givenAnNullEmailThrowAnException")
+    @DisplayName("Given A Null Email, Throw An Exception")
     void givenANullEmailThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail((String) null));
+        ErrorSpecification errorSpecification = new ErrorSpecification("E-mail");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validateEmail(errorSpecification, (String) null));
     }
 
     @Test
-    @DisplayName("givenAnInvalidPhoneNumberThrowAnException")
+    @DisplayName("Given An Invalid PhoneNumber, Throw An Exception")
     void givenAnInvalidPhoneNumberThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber("999-8754-775"));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Phone-number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber(errorSpecification,"999-8754-775"));
     }
 
     @Test
-    @DisplayName("givenAnEmptyPhoneNumberThrowAnException")
+    @DisplayName("Given An Empty PhoneNumber, Throw An Exception")
     void givenAnEmptyPhoneNumberThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber(""));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Phone-number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber(errorSpecification,""));
     }
 
     @Test
-    @DisplayName("givenANullPhoneNumberThrowAnException")
+    @DisplayName("Given A Null PhoneNumber, Throw An Exception")
     void givenANullPhoneNumberThrowAnException() {
-        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber((String) null));
+        ErrorSpecification errorSpecification = new ErrorSpecification("Phone-number");
+        assertThrows(IllegalArgumentException.class, ()-> Validate.validatePhoneNumber(errorSpecification, (String) null));
     }
 
 }

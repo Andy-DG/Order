@@ -2,6 +2,7 @@ package com.example.order.user;
 
 import com.example.order.user.customer.details.Address;
 import com.example.order.user.customer.details.Name;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 
 import java.util.Objects;
@@ -15,8 +16,8 @@ public abstract class User {
     private final String phoneNumber;
 
     protected User(Name name, String email, Address address, String phoneNumber) {
-        Validate.validateEmail(email);
-        Validate.validatePhoneNumber(phoneNumber);
+        Validate.validateEmail(new ErrorSpecification("email: " + email + " "), email);
+        Validate.validatePhoneNumber(new ErrorSpecification("phone-number: " + phoneNumber + " "), phoneNumber);
         this.id = UUID.randomUUID();
         this.name = name;
         this.email = email;
@@ -25,8 +26,8 @@ public abstract class User {
     }
 
     protected User(UUID id, Name name, String email, Address address, String phoneNumber) {
-        Validate.validateEmail(email);
-        Validate.validatePhoneNumber(phoneNumber);
+        Validate.validateEmail(new ErrorSpecification("email: " + email + " "), email);
+        Validate.validatePhoneNumber(new ErrorSpecification("phone-number: " + phoneNumber + " "), phoneNumber);
         this.id = id;
         this.name = name;
         this.email = email;

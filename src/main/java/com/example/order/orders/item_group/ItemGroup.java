@@ -3,6 +3,7 @@ package com.example.order.orders.item_group;
 
 import com.example.order.item.Item;
 import com.example.order.item.SelectedItem;
+import com.example.order.util.ErrorSpecification;
 import com.example.order.util.Validate;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class ItemGroup {
     private final LocalDate shippingDate;
 
     public ItemGroup(UUID itemGroupId, Item item, int amount) {
-        Validate.objectIsNotNull(item);
+        Validate.objectIsNotNull(new ErrorSpecification("Item "), item);
         this.itemGroupId = itemGroupId;
         this.selectedItem = new SelectedItem(item.getId(), item.getName(), item.getDescription(), item.getPrice(), item.getStock());
         this.amount = amount;
